@@ -1,5 +1,6 @@
 import React,{Component,Fragment } from 'react';
-import MenuItem from './component/menuItem'
+import MenuItem from './component/menuItem';
+
 class Menu extends Component {
     constructor(props){
         super(props)

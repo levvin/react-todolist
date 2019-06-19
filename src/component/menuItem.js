@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropType from 'prop-types';
+
 class MenuItem extends Component {
     constructor(props) {
         super(props);
@@ -13,5 +15,12 @@ class MenuItem extends Component {
          );
     }
 }
- 
+
+MenuItem.propTypes = {
+    content:PropType.string.isRequired,
+    delItem:PropType.func.isRequired,
+    index:PropType.number.isRequired
+}
+
 export default MenuItem;
+
