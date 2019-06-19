@@ -15,7 +15,7 @@ class Menu extends Component {
     inputChange(e){
         let inputValue = this.trim(e.target.value)
         this.setState({
-            inputValue: inputValue
+            inputValue: inputValue 
         })
     }
     add(){
