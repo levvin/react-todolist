@@ -14,7 +14,7 @@ class Menu extends Component {
         return s.replace(/(^\s*)|(\s*$)/g, "");
     }
     inputChange(e){
-        let inputValue = this.trim(e.target.value)
+        let inputValue = this.trim(this.input.value)
         this.setState({
             inputValue: inputValue 
         })
@@ -35,6 +35,7 @@ class Menu extends Component {
         })
     }
     render(){
+        console.log('parent-render...')
         return (
             <Fragment>
                 <div>
@@ -45,6 +46,7 @@ class Menu extends Component {
                         className="input"
                         value={this.state.inputValue} 
                         onChange={this.inputChange.bind(this)}
+                        ref={(input)=>{this.input=input}}
                     />
                     <button onClick={this.add.bind(this)} >增值服务</button>
                 </div>
@@ -65,6 +67,11 @@ class Menu extends Component {
             </Fragment>
         )
     }
+    shouldComponentUpdate(nextProps,nextState){
+     return true;
+       
+    }
+    
 }
 
 export default Menu;
