@@ -1,5 +1,6 @@
 import React,{Component,Fragment } from 'react';
 import MenuItem from './component/menuItem';
+import Axios from 'axios';
 
 class Menu extends Component {
     constructor(props){
@@ -9,6 +10,19 @@ class Menu extends Component {
             list:['仙侠','都市']
         }
         this.del=this.del.bind(this)
+    }
+    componentDidMount() {
+        Axios.get('https://www.easy-mock.com/mock/5cb3da4df872d6591f22c0f8/api/data')
+        .then((res)=>{
+            console.log('axios 获取数据成功:'+JSON.stringify(res))  
+            this.setState({
+                list:res.data.data
+            })
+        })
+        .catch((error)=>{
+            console.log('axios 获取数据失败'+error)
+        })
+
     }
     trim(s){
         return s.replace(/(^\s*)|(\s*$)/g, "");
@@ -35,7 +49,6 @@ class Menu extends Component {
         })
     }
     render(){
-        console.log('parent-render...')
         return (
             <Fragment>
                 <div>
@@ -66,12 +79,7 @@ class Menu extends Component {
                 </ul>
             </Fragment>
         )
-    }
-    shouldComponentUpdate(nextProps,nextState){
-     return true;
-       
-    }
-    
+    }  
 }
 
 export default Menu;
